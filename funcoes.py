@@ -59,11 +59,16 @@ def calcula_pontos_full_house(lista):
             dicio[dado] += 1
         else:
             dicio[dado] = 1
-    for valor in dicio.values:
+    trio = 0
+    dupla = 0
+    for valor in dicio.values():
         if valor == 3:
-            if valor == 2:
-                soma = 0
-                for dado in lista:
-                    soma += dado
-                    return soma
+            trio += 1
+        if valor == 2:
+            dupla += 1
+    if trio == 1 and dupla == 1:
+        soma = 0
+        for dado in lista:
+            soma += dado
+            return soma
     return 0

@@ -70,7 +70,7 @@ def calcula_pontos_full_house(lista):
         soma = 0
         for dado in lista:
             soma += dado
-            return soma
+        return soma
     return 0
 
 def calcula_pontos_quadra(lista):

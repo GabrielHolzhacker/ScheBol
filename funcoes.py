@@ -98,7 +98,6 @@ def calcula_pontos_quina(a):
     for num in didi.values():
         if num >= 5:
             return 50
-        else:
-            return 0
+    return 0
 
-        
+

@@ -88,3 +88,4 @@ def calcula_pontos_quadra(lista):
             return soma
     return 0
 
+testao = 1

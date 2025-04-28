@@ -87,3 +87,4 @@ def calcula_pontos_quadra(lista):
                 soma += dado
             return soma
     return 0
+

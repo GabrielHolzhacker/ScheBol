@@ -51,3 +51,19 @@ def calcula_pontos_sequencia_alta(lista):
         return 30
     else:
         return 0
+    
+def calcula_pontos_full_house(lista):
+    dicio = {}
+    for dado in lista:
+        if dado in dicio:
+            dicio[dado] += 1
+        else:
+            dicio[dado] = 1
+    for valor in dicio.values:
+        if valor == 3:
+            if valor == 2:
+                soma = 0
+                for dado in lista:
+                    soma += dado
+                    return soma
+    return 0

@@ -20,3 +20,10 @@ def remover_dado(dados_rolados, dados_guardados, num):
         if i != num:
             dados_guardados_novo.append(dados_guardados[i])
     return [dados_rolados, dados_guardados_novo]
+
+def calcula_pontos_regra_simples(lista):
+    dicio = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
+    for i in lista:
+        if i in dicio:
+            dicio[i] += i
+    return dicio

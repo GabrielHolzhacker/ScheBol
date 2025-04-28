@@ -100,4 +100,12 @@ def calcula_pontos_quina(a):
             return 50
     return 0
 
-
+def calcula_pontos_regra_avancada(a):
+    didi = {'cinco_iguais':0, 'full_house':0, 'quadra':0, 'sem_combinacao':0, 'sequencia_alta':0, 'sequencia_baixa':0}
+    didi['cinco_iguais'] = calcula_pontos_quina(a)
+    didi['full_house'] = calcula_pontos_full_house(a)
+    didi['quadra'] = calcula_pontos_quadra(a)
+    didi['sem_combinacao'] = calcula_pontos_soma(a)   
+    didi['sequencia_alta'] = calcula_pontos_sequencia_alta(a)
+    didi['sequencia_baixa'] = calcula_pontos_sequencia_baixa(a)
+    return didi

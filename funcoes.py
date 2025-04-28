@@ -88,3 +88,17 @@ def calcula_pontos_quadra(lista):
             return soma
     return 0
 
+def calcula_pontos_quina(a):
+    didi = {}
+    for i in a: 
+        if i in didi:
+            didi[i] +=1
+        else:
+            didi[i] = 1
+    for num in didi.values():
+        if num >= 5:
+            return 50
+        else:
+            return 0
+
+        

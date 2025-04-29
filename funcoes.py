@@ -118,7 +118,9 @@ def faz_jogada(dado, tipoF, dic):
                 pont = calcula_pontos_regra_avancada(dado)
                 tipo1[tipoF] = pont[tipoF]
         if regra == 'regra_simples':
-            if tipoF in tipo1:
+            if int(tipoF) in tipo1:
                 pont = calcula_pontos_regra_simples(dado)
                 tipo1[tipoF] = pont[tipoF]
     return dic
+
+

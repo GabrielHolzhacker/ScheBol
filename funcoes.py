@@ -109,3 +109,16 @@ def calcula_pontos_regra_avancada(a):
     didi['sequencia_alta'] = calcula_pontos_sequencia_alta(a)
     didi['sequencia_baixa'] = calcula_pontos_sequencia_baixa(a)
     return didi
+
+def faz_jogada(dado, tipoF, dic):
+    for regra, tipo1 in dic.items():
+        pont = 0
+        if regra == 'regra_avancada':
+            if tipoF in tipo1:
+                pont = calcula_pontos_regra_avancada(dado)
+                tipo1[tipoF] = pont[tipoF]
+        if regra == 'regra_simples':
+            if tipoF in tipo1:
+                pont = calcula_pontos_regra_avancada(dado)
+                tipo1[tipoF] = pont[tipoF]
+    return dic

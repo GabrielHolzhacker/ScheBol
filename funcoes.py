@@ -111,17 +111,16 @@ def calcula_pontos_regra_avancada(a):
     return didi
 
 def faz_jogada(dado, tipoF, dic):
-    tipoD = tipoF.values()
     for regra, tipo1 in dic.items():
         pont = 0
         if regra == 'regra_avancada':
-            if tipoD in tipo1:
+            if tipoF in tipo1:
                 pont = calcula_pontos_regra_avancada(dado)
-                tipo1[tipoD] = pont[tipoD]
+                tipo1[tipoF] = pont[tipoF]
         if regra == 'regra_simples':
-            if (tipoD) in tipo1:
+            if (tipoF) in tipo1:
                 pont = calcula_pontos_regra_simples(dado)
-                tipo1[tipoD] = pont[tipoD]
+                tipo1[tipoF] = pont[tipoF]
     return dic
 
 

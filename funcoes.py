@@ -110,10 +110,10 @@ def calcula_pontos_regra_avancada(a):
     return didi
 
 def faz_jogada(dado, tipoF, dic):
-    if 'regra_simples' in dic and tipoF in dic['regra_simples']:
-        pontuacoes = calcula_pontos_regra_simples(dado)
-        dic['regra_simples'][tipoF] = pontuacoes[tipoF]
-    elif 'regra_avancada' in dic and tipoF in dic['regra_avancada']:
-        pontuacoes = calcula_pontos_regra_avancada(dado)
-        dic['regra_avancada'][tipoF] = pontuacoes[tipoF]
+    if tipoF in dic['regra_simples']:
+        pontos = calcula_pontos_regra_simples(dado)
+        dic['regra_simples'][tipoF] = pontos[int(tipoF)]
+    elif tipoF in dic['regra_avancada']:
+        pontos = calcula_pontos_regra_avancada(dado)
+        dic['regra_avancada'][tipoF] = pontos[tipoF]
     return dic

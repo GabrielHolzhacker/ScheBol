@@ -24,8 +24,18 @@ def remover_dado(dados_rolados, dados_guardados, num):
 def calcula_pontos_regra_simples(dados):
     pontos = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
     for valor in dados:
-        if valor in pontos:
-            pontos[valor] = pontos[valor] + valor
+        if valor == 1:
+            pontos[1] += 1
+        elif valor == 2:
+            pontos[2] += 2
+        elif valor == 3:
+            pontos[3] += 3
+        elif valor == 4:
+            pontos[4] += 4
+        elif valor == 5:
+            pontos[5] += 5
+        elif valor == 6:
+            pontos[6] += 6
     return pontos
 
 def calcula_pontos_soma(lista):
@@ -111,10 +121,10 @@ def calcula_pontos_regra_avancada(a):
     return didi
 
 def faz_jogada(dados, tipoF, cartela):
-    if tipoF in cartela['regra_simples']:
+    if tipoF in [1, 2, 3, 4, 5, 6]:
         pontos = calcula_pontos_regra_simples(dados)
-        cartela['regra_simples'][tipoF] = pontos[tipoF]
-    elif tipoF in cartela['regra_avancada']:
+        cartela["regra_simples"][tipoF] = pontos[tipoF]
+    else:
         pontos = calcula_pontos_regra_avancada(dados)
-        cartela['regra_avancada'][tipoF] = pontos[tipoF]
+        cartela["regra_avancada"][tipoF] = pontos[tipoF]
     return cartela

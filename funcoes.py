@@ -108,3 +108,18 @@ def calcula_pontos_regra_avancada(a):
     didi['sequencia_alta'] = calcula_pontos_sequencia_alta(a)
     didi['sequencia_baixa'] = calcula_pontos_sequencia_baixa(a)
     return didi
+
+
+def faz_jogada(a, b, c):
+    num = ['1','2','3','4','5','6']
+    if b in num:
+        b = int(b)
+    if b in c['regra_simples']:
+        pontos = calcula_pontos_regra_simples(a)
+        c['regra_simples'][b] = pontos[b]
+    elif b in c['regra_avancada']:
+        pontos = calcula_pontos_regra_avancada(a)
+        c['regra_avancada'][b] = pontos[b]
+    return c
+
+

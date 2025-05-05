@@ -1,29 +1,29 @@
 from random import randint
-def rolar_dados (num):
+def rolar_a (num):
     lista = []
     for numero in range(num):
         lista.append(randint(1, 6))
     return lista
 
-def guardar_dado (dados_rolados, dados_guardados, num):
-    dados_guardados.append(dados_rolados[num])
-    dados_rolados_novo = []
-    for i in range (len(dados_rolados)):
+def guardar_dado (a_rolados, a_guara, num):
+    a_guara.append(a_rolados[num])
+    a_rolados_novo = []
+    for i in range (len(a_rolados)):
         if i != num:
-            dados_rolados_novo.append(dados_rolados[i])
-    return [dados_rolados_novo, dados_guardados]
+            a_rolados_novo.append(a_rolados[i])
+    return [a_rolados_novo, a_guara]
 
-def remover_dado(dados_rolados, dados_guardados, num):
-    dados_rolados.append(dados_guardados[num])
-    dados_guardados_novo= []
-    for i in range (len(dados_guardados)):
+def remover_dado(a_rolados, a_guara, num):
+    a_rolados.append(a_guara[num])
+    a_guara_novo= []
+    for i in range (len(a_guara)):
         if i != num:
-            dados_guardados_novo.append(dados_guardados[i])
-    return [dados_rolados, dados_guardados_novo]
+            a_guara_novo.append(a_guara[i])
+    return [a_rolados, a_guara_novo]
 
-def calcula_pontos_regra_simples(dados):
+def calcula_pontos_regra_simples(a):
     pontos = {i: 0 for i in range(1, 7)}
-    for d in dados:
+    for d in a:
         pontos[d] += d
     return pontos
 
@@ -108,13 +108,3 @@ def calcula_pontos_regra_avancada(a):
     didi['sequencia_alta'] = calcula_pontos_sequencia_alta(a)
     didi['sequencia_baixa'] = calcula_pontos_sequencia_baixa(a)
     return didi
-
-def faz_jogada(dados, categoria, cartela_de_pontos):
-    if categoria in cartela_de_pontos["regra_simples"]:
-        pontos = calcula_pontos_regra_simples(dados)
-        cartela_de_pontos["regra_simples"][categoria] = pontos[categoria]
-    elif categoria in cartela_de_pontos["regra_avancada"]:
-        pontos = calcula_pontos_regra_avancada(dados)
-        cartela_de_pontos["regra_avancada"][categoria] = pontos[categoria]
-    return cartela_de_pontos
-

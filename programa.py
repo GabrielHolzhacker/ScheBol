@@ -31,16 +31,22 @@ while num_rodadas < 12:
         if Opção_j1 == '1':
             print("Digite o índice do dado a ser guardado (0 a 4):")
             indice = int(input())
-            func = guardar_dado(dados_rolados_j1, guardados_j1, indice)
-            dados_rolados_j1 = func[0]
-            guardados_j1 = func[1]
+            if 0 <= indice < len(dados_rolados_j1):
+                func = guardar_dado(dados_rolados_j1, guardados_j1, indice)
+                dados_rolados_j1 = func[0]
+                guardados_j1 = func[1]
+            else:
+                print("Índice inválido.")
 
         elif Opção_j1 == '2':
             print("Digite o índice do dado a ser guardado (0 a 4):")
             indice = int(input())
-            func = remover_dado(dados_rolados_j1, guardados_j1, indice)
-            dados_rolados_j1 = func[0]
-            guardados_j1 = func[1]
+            if 0 <= indice < len(dados_rolados_j1):
+                func = remover_dado(dados_rolados_j1, guardados_j1, indice)
+                dados_rolados_j1 = func[0]
+                guardados_j1 = func[1]
+            else:
+                print("Índice inválido.")
 
         elif Opção_j1 == '3':
             if contador_rolagem >= 2:
@@ -77,7 +83,7 @@ while num_rodadas < 12:
     num_rodadas += 1
 
 pontuacao = 0
-pontos__regras_simples = 0
+pontos_regras_simples = 0
 
 for regra, valores in cartela.items():
     for pontos in valores.values():

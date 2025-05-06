@@ -77,7 +77,7 @@ while num_rodadas < 12:
     num_rodadas += 1
 
 pontuacao = 0
-pontos_simples = 0
+pontos__regras_simples = 0
 
 for regra, valores in cartela.items():
     for pontos in valores.values():

@@ -17,18 +17,15 @@ while num_rodadas < 12:
     dados_rolados_j1 = rolar_dados(5)
     contador_rolagem = 0
     guardados_j1 = []
+    rodada_finalizada = 0
 
-    print(f'Dados rolados: {dados_rolados_j1}')
-    print(f'Dados guardados: {guardados_j1}')
-    print("Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:")
-    Opção_j1 = "inicio"
-    while Opção_j1 != 'jogada concluida':
+    while rodada_finalizada == 0:
         print(f'Dados rolados: {dados_rolados_j1}')
         print(f'Dados guardados: {guardados_j1}')
         print("Digite 1 para guardar um dado, 2 para remover um dado, 3 para rerrolar, 4 para ver a cartela ou 0 para marcar a pontuação:")
-        Opção_j1 = input()
+        opcao = input()
 
-        if Opção_j1 == '1':
+        if opcao == '1':
             print("Digite o índice do dado a ser guardado (0 a 4):")
             indice = int(input())
             if 0 <= indice < len(dados_rolados_j1):
@@ -38,7 +35,7 @@ while num_rodadas < 12:
             else:
                 print("Índice inválido.")
 
-        elif Opção_j1 == '2':
+        elif opcao == '2':
             print("Digite o índice do dado a ser removido (0 a 4):")
             indice = int(input())
             if 0 <= indice < len(guardados_j1):
@@ -48,17 +45,17 @@ while num_rodadas < 12:
             else:
                 print("Índice inválido.")
 
-        elif Opção_j1 == '3':
+        elif opcao == '3':
             if contador_rolagem >= 2:
                 print("Você já usou todas as rerrolagens.")
             else:
                 dados_rolados_j1 = rolar_dados(len(dados_rolados_j1))
                 contador_rolagem += 1
 
-        elif Opção_j1 == '4':
+        elif opcao == '4':
             imprime_cartela(cartela)
 
-        elif Opção_j1 == '0':
+        elif opcao == '0':
             print("Digite a combinação desejada:")
             combinacao = input()
             dados_totais = dados_rolados_j1 + guardados_j1
@@ -67,16 +64,17 @@ while num_rodadas < 12:
                 numero = int(combinacao)
                 if cartela["regra_simples"][numero] == -1:
                     cartela = faz_jogada(dados_totais, combinacao, cartela)
-                    Opção_j1 = "jogada concluida" 
+                    rodada_finalizada = "jogada concluida" 
                 else:
                     print("Essa combinação já foi utilizada.")
             elif combinacao in cartela["regra_avancada"]:
                 if cartela["regra_avancada"][combinacao] == -1:
                     cartela = faz_jogada(dados_totais, combinacao, cartela)
-                    Opção_j1 = "jogada concluida" 
+                    rodada_finalizada = "jogada concluida" 
                 else:
                     print("Essa combinação já foi utilizada.")
-
+            else:
+                print("Combinação inválida. Tente novamente.")
         else:
             print("Opção inválida. Tente novamente.")
 
@@ -87,9 +85,10 @@ pontos_regras_simples = 0
 
 for regra, valores in cartela.items():
     for pontos in valores.values():
-        pontuacao += pontos
-        if regra == 'regra_simples':
-            pontos_regras_simples += pontos
+        if pontos != -1:
+            pontuacao += pontos
+            if regra == 'regra_simples':
+                pontos_regras_simples += pontos
 
 if pontos_regras_simples >= 63:
     pontuacao += 35

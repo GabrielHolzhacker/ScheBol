@@ -12,10 +12,9 @@ cartela = {
     }
 }
 num_rodadas = 0
-
+guardados_j1 = []
 while num_rodadas < 12:
     dados_rolados_j1 = rolar_dados(5)
-    guardados_j1 = []
     contador_rolagem = 0
 
     print(f'Dados rolados: {dados_rolados_j1}')

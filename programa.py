@@ -39,9 +39,9 @@ while num_rodadas < 12:
                 print("Índice inválido.")
 
         elif Opção_j1 == '2':
-            print("Digite o índice do dado a ser guardado (0 a 4):")
+            print("Digite o índice do dado a ser removido (0 a 4):")
             indice = int(input())
-            if 0 <= indice < len(dados_rolados_j1):
+            if 0 <= indice < len(guardados_j1):
                 func = remover_dado(dados_rolados_j1, guardados_j1, indice)
                 dados_rolados_j1 = func[0]
                 guardados_j1 = func[1]
@@ -67,19 +67,19 @@ while num_rodadas < 12:
                 numero = int(combinacao)
                 if cartela["regra_simples"][numero] == -1:
                     cartela = faz_jogada(dados_totais, combinacao, cartela)
-                    opcao = "jogada concluida" 
+                    Opção_j1 = "jogada concluida" 
                 else:
                     print("Essa combinação já foi utilizada.")
             elif combinacao in cartela["regra_avancada"]:
                 if cartela["regra_avancada"][combinacao] == -1:
                     cartela = faz_jogada(dados_totais, combinacao, cartela)
-                    opcao = "jogada concluida" 
+                    Opção_j1 = "jogada concluida" 
                 else:
                     print("Essa combinação já foi utilizada.")
 
         else:
             print("Opção inválida. Tente novamente.")
-            Opção_j1 = input()
+
     num_rodadas += 1
 
 pontuacao = 0

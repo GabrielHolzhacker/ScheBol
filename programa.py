@@ -3,7 +3,7 @@ from funcoes import *
 cartela = {
     'regra_simples': {1: -1, 2: -1, 3: -1, 4: -1, 5: -1, 6: -1},
     'regra_avancada': {
-        'sem_combinacao': -1,
+        'sem_opcao': -1,
         'quadra': -1,
         'full_house': -1,
         'sequencia_baixa': -1,
@@ -27,9 +27,9 @@ while num_rodadas < 12:
 
         if opcao == '1':
             print("Digite o índice do dado a ser guardado (0 a 4):")
-            indice = int(input())
-            if 0 <= indice < len(dados_rolados_j1):
-                func = guardar_dado(dados_rolados_j1, guardados_j1, indice)
+            opcao = int(input())
+            if 0 <= opcao < len(dados_rolados_j1):
+                func = guardar_dado(dados_rolados_j1, guardados_j1, opcao)
                 dados_rolados_j1 = func[0]
                 guardados_j1 = func[1]
             else:
@@ -37,9 +37,9 @@ while num_rodadas < 12:
 
         elif opcao == '2':
             print("Digite o índice do dado a ser removido (0 a 4):")
-            indice = int(input())
-            if 0 <= indice < len(guardados_j1):
-                func = remover_dado(dados_rolados_j1, guardados_j1, indice)
+            opcao = int(input())
+            if 0 <= opcao < len(guardados_j1):
+                func = remover_dado(dados_rolados_j1, guardados_j1, opcao)
                 dados_rolados_j1 = func[0]
                 guardados_j1 = func[1]
             else:
@@ -57,19 +57,19 @@ while num_rodadas < 12:
 
         elif opcao == '0':
             print("Digite a combinação desejada:")
-            combinacao = input()
+            opcao = input()
             dados_totais = dados_rolados_j1 + guardados_j1
 
-            if combinacao in cartela["regra_simples"]:
-                numero = int(combinacao)
+            if opcao in cartela["regra_simples"]:
+                numero = int(opcao)
                 if cartela["regra_simples"][numero] == -1:
-                    cartela = faz_jogada(dados_totais, combinacao, cartela)
+                    cartela = faz_jogada(dados_totais, opcao, cartela)
                     rodada_finalizada = "jogada concluida" 
                 else:
                     print("Essa combinação já foi utilizada.")
-            elif combinacao in cartela["regra_avancada"]:
-                if cartela["regra_avancada"][combinacao] == -1:
-                    cartela = faz_jogada(dados_totais, combinacao, cartela)
+            elif opcao in cartela["regra_avancada"]:
+                if cartela["regra_avancada"][opcao] == -1:
+                    cartela = faz_jogada(dados_totais, opcao, cartela)
                     rodada_finalizada = "jogada concluida" 
                 else:
                     print("Essa combinação já foi utilizada.")

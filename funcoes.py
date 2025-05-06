@@ -1,5 +1,5 @@
 from random import randint
-def rolar_a (num):
+def rolar_dados (num):
     lista = []
     for numero in range(num):
         lista.append(randint(1, 6))
@@ -138,5 +138,3 @@ def imprime_cartela(cartela):
         else:
             print(f"| {i}: {filler}|    |")
     print("-"*25)
-
-    

@@ -81,3 +81,36 @@ def rodada(cartela, dados_rolados_j1, guardados_j1):
 
     faz_jogada(dados, combinação, cartela)
     return cartela
+
+num_rodadas = 0
+
+imprime_cartela(cartela)
+print(f'Dados rolados: {dados_rolados_j1}')
+print(f'Dados guardados: {guardados_j1}')
+
+while num_rodadas < 12:
+    cartela = rodada(cartela, dados_rolados_j1, guardados_j1)
+    
+    dados_rolados_j1 = rolar_dados(5)
+    guardados_j1 = []
+
+    if num_rodadas != 11:
+        print(f'Dados rolados: {dados_rolados_j1}')
+        print(f'Dados guardados: {guardados_j1}')
+    
+    num_rodadas += 1
+
+pontuacao = 0
+pontos_regras_simples = 0
+
+for regra, valores in cartela.items():
+    for pontos in valores.values():
+        pontuacao += pontos
+        if regra == 'regra_simples':
+            pontos_regras_simples += pontos
+
+if pontos_regras_simples >= 63:
+    pontuacao += 35
+
+imprime_cartela(cartela)
+print(f"Pontuação total: {pontuacao}")
